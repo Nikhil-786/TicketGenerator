@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Conference ticket generator</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      body {
+        background-image: url("./assets/images/background-desktop.png");
+      }
+      div {
+        margin-top: 60px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        height: 800px;
+        margin-bottom: 25px;
+      }
+      span {
+        text-align: center;
+        margin-left: 60px;
+      }
+      .ImgDiv {
+        display: flex;
+        border: 1px dashed white;
+        height: 110px;
+        align-items: center;
+
+        border-radius: 5px;
+      }
+
+      div > label {
+        margin-left: -15px;
+        margin-top: 63px;
+      }
+      img {
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        align-items: center;
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-bottom: 38px;
+        margin-left: 230px;
+        margin: 4px;
+        margin-bottom: 32px;
+      }
+      input {
+        height: 50px;
+        width: 452px;
+        color: white;
+        font-size: medium;
+      }
+      button {
+        height: 50px;
+        width: 456px;
+        border-radius: 5px;
+      }
+      input {
+        margin-top: 14px;
+        margin-bottom: 23px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid white;
+      }
+      button {
+        background-color: hsl(7, 88%, 67%);
+      }
+      .headerDiv {
+        display: flex;
+        text-align: end;
+      }
+      #head2 {
+        color: white;
+        text-align: center;
+      }
+      #head1 {
+        color: white;
+        text-align: center;
+        margin-right: 3px;
+        margin-top: 8px;
+      }
+      #head {
+        height: 20px;
+        margin-left: 42%;
+        border: 1px solid black;
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="head" src="./assets/images/logo-mark.svg" alt="" />
+    <h3 id="head1">coding conf</h3>
+    <h1 id="head2">
+      Your Journey to Coding Conf <br /><span>2025 Starts Here!</span>
+    </h1>
+
+    <div>
+      <!-- Form starts -->
+
+      <form action="">
+        <h3>Secure your spot at next year's biggest coding conference.</h3>
+        <label for="Upload">Upload Avatar</label>
+        <div class="ImgDiv">
+          <br />
+          <img
+            src="assets/images/icon-upload.svg"
+            alt="ImgUpload"
+            onclick="handlePhoto()"
+          />
+          <label>Drag and Drop or Click to Upload </label>
+        </div>
+        <h5 style="visibility: hidden; color: red" id="picId">
+          pitcure should we less than 50 KB.
+        </h5>
+        <label for="">upload your photo(jpg or png, max size:50KB)</label><br />
+        <label for="FullName">Full Name</label><br />
+        <input
+          type="text"
+          placeholder=""
+          id="fullName"
+          onkeyup="handlefullName()"
+        /><br />
+        <h5 style="visibility: hidden; color: red" id="validateName">
+          FullName can not contain Number or special Character
+        </h5>
+        <label for="Email">Email Address</label><br />
+        <input
+          type="text"
+          placeholder="example@email.com"
+          onchange="handleEmail()"
+          id="email"
+        /><br />
+        <h5 style="visibility: hidden; color: red" id="validateEmail">
+          email id not vaild
+        </h5>
+        <br />
+        <label for="">GitHub Username</label><br />
+        <input type="text" placeholder="@yourusername" id="gitUser" /><br />
+        <button onclick="handleEmptyField()">Generate My Ticket</button>
+      </form>
+    </div>
+    <!-- Form ends -->
+
+    <!-- Generated tickets starts -->
+
+
+
+    <!-- Generated tickets ends -->
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Nikhil Patel</a>.
+    </div> -->
+    <script>
+      const nameValidate = document.getElementById("validateName");
+      const emailValidate = document.getElementById("validateEmail");
+      const fullname = document.getElementById("fullName");
+      const pic = document.getElementById("picId");
+      let picDetails;
+
+      function handleEmptyField() {
+        if (
+          document.getElementById("fullName").value == "" ||
+          document.getElementById("email").value == "" ||
+          document.getElementById("gitUser").value == ""
+        ) {
+          alert("Field Must not be empty");
+        }
+      }
+
+      function handlefullName() {
+        const value = document.getElementById("fullName").value;
+        if (/\d/.test(value)) {
+          nameValidate.style.visibility = "visible";
+        } else {
+          nameValidate.style.visibility = "hidden";
+        }
+      }
+      function handleEmail() {
+        const value = document.getElementById("email").value;
+        console.log(value);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(value)) {
+          emailValidate.style.visibility = "hidden";
+        } else {
+          emailValidate.style.visibility = "visible";
+        }
+      }
+
+      function handlePhoto() {
+        let input = document.createElement("input");
+        input.type = "file";
+        input.onchange = () => {
+          let files = Array.from(input.files);
+         const convert =files[0].size/1000;
+          if (convert < 50) {
+            let picDetails = localStorage.setItem(1,files);
+            console.log(picDetails);
+          } else {
+            pic.style.visibility = "visible";
+          }
+        };
+        input.click();
+      }
+    </script>
+    <script src="/src/validation.js"></script>
+  </body>
+</html>
