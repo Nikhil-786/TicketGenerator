@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background-image: url("./assets/images/background-desktop.png");
+    }
+    #head {
+      color: white;
+      display: flex;
+      justify-content: center;
+    }
+    #head1 {
+      color: white;
+    }
+    #head2 {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: x-large;
+      font-family: "CustomFont", Inconsolata-ExtraBold;
+      text-align: center;
+    }
+    #head3 {
+      width: 400px;
+      height: 200px;
+      border: 2px solid white;
+      margin-top: 8px;
+      margin-left: 36%;
+      border-radius: 10px;
+      color: white;
+      border-top: 10px solid white;
+    }
+    #imgLogo {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      margin-top: 17px;
+      margin-left: 21px;
+    }
+
+    #logoText {
+      position: absolute;
+      margin-left: 61px;
+      font-size: xx-large;
+      margin-top: 8px;
+    }
+
+    #userName {
+      color: white;
+      position: absolute;
+      margin-top: 154px;
+      margin-left: 108px;
+      padding: 5px;
+    }
+
+    #name {
+      position: absolute;
+      margin-top: 130px;
+      margin-left: 87px;
+      font-size: x-large;
+    }
+    .vl {
+      position: absolute;
+      margin-top: 79px;
+      margin-left: 325px;
+
+      transform: rotate(90deg);
+    }
+    .seperator {
+      transform: rotate(90deg);
+      position: absolute;
+      margin-top: 83px;
+      margin-left: 241px;
+    }
+    #pic {
+      height: 70px;
+      border-radius: 15px;
+      margin-top: 118px;
+      position: absolute;
+     
+    }
+    #gitImg {
+      position: absolute;
+      margin-top: 155px;
+      margin-left: 88px;
+    }
+    @font-face {
+      font-family: "CustomFont";
+      src: url(./assets/fonts/static/Inconsolata-ExtraBold.ttf);
+      src: url(./assets/fonts/static/Inconsolata-Regular.ttf);
+    }
+    #email {
+      font-weight: 50;
+      font-family: "CustomFont", Inconsolata-Regular;
+      mix-blend-mode: luminosity;
+      color: white;
+    }
+  </style>
+  <body>
+    <div id="head">
+      <img id="head" src="./assets/images/logo-mark.svg" alt="" />
+      <h3 id="head1">coding conf</h3>
+    </div>
+
+    <div id="head2">
+      <h1 id="fname">
+        Congrats, Jonatan Kristof! <br />
+        Your ticket is ready.
+      </h1>
+      <h5 id="email">
+        We've emailed your ticket to <br />
+        Jonatan@email.com and will send updates in <br />
+        the run up to the event.
+      </h5>
+    </div>
+    <div>
+      <div id="head3">
+        <img id="imgLogo" src="./assets/images/logo-mark.svg" alt="" />
+        <span id="logoText">coding conf</span>
+        <h5 id="name">Firstname</h5>
+        <span
+          ><img src="./assets/images/icon-github.svg" alt="" id="gitImg"
+        /></span>
+        <h5 id="userName">
+          <img src="./assets/images/icon-github.svg" alt="GitHub" />UserName
+        </h5>
+        <h5 class="seperator">--------------------</h5>
+        <img src="./assets/images/image-avatar.jpg" alt="picUpLoad" id="pic" />
+        <h4 class="vl">#12345</h4>
+      </div>
+    </div>
+
+    <script>
+      const firsName = document.getElementById("fname");
+      const emailId = document.getElementById("email");
+      const myKeyValues = window.location.search;
+      console.log(myKeyValues);
+      const urlParams = new URLSearchParams(myKeyValues);
+      const fullName = urlParams.get("fullName");
+      const picture = urlParams.get("relativePath0");
+      console.log(picture);
+
+      const email = urlParams.get("email");
+      const userName = urlParams.get("userName");
+      const name = document.getElementById("name");
+      const uName = document.getElementById("userName");
+      const ticketId = Math.floor(Math.random() * 100000);
+      const id = document.getElementsByClassName("vl");
+      const pic = document.getElementById("pic");
+
+      firsName.innerHTML = `Congrats, ${fullName} <br>
+        Your ticket is ready.`;
+      emailId.innerHTML = ` We've emailed your ticket to <br>
+    ${email} and will send updates in <br>
+        the run up to the event.`;
+      name.textContent = `${fullName}`;
+      uName.textContent = `${userName}`;
+      id[0].textContent = `#${ticketId}`;
+    </script>
+  </body>
+</html>
