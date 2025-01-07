@@ -107,43 +107,49 @@
         margin-bottom: 158px;
         margin-right: 30px;
       }
-      @media screen and  (max-width:400px){
+      /* breakPoint for responsive websites
+      mostly used its just guideLines
+      600px 601px 768px 992 px 1200px */
+
+      @media (max-width: 600px) {
         body {
-        background-image: url("./assets/images/background-mobile.png");
-      }
-      #head {
-        margin: 4px 93px 0px 90px;
-      }
-#codeConf{
-  text-align: center;
-    margin-left: 23px;
-}
-label{
-  margin-left: 58px; 
-}
-.ImgDiv{
-  width: 390px;
-    margin-left: 40px;
-}
-#fullName{
-  width: 390px;
-  margin-left: 38px;
-}
-#email{
-  width: 390px;
-  margin-left: 38px;
-}
+          background-image: url("./assets/images/background-mobile.png");
+        }
 
-#gitUser{
-  width: 390px;
-  margin-left: 38px;
-}
+        #head2 {
+          font-size: small;
+          text-align: center;
+        }
 
-#btnsubmit{
-  width: 390px;
-  margin-left: 45px;
-}
+        #codeConf {
+          font-size: small;
+          text-align: center;
+        }
+        label {
+          margin-left: 50px;
+        }
 
+        .ImgDiv {
+          height: 98px;
+          width: 288px;
+          margin-left: 79px;
+        }
+        #fullName {
+          height: 50px;
+          width: 288px;
+          margin-left: 79px;
+        }
+        #email {
+          height: 50px;
+          width: 288px;
+          margin-left: 79px;
+        }
+
+        #gitUser {
+          height: 50px;
+          width: 288px;
+          margin-left: 79px;
+        }
       }
     </style>
   </head>
@@ -158,8 +164,10 @@ label{
       <!-- Form starts -->
 
       <form action="./GenerateTicket.html" name="myForm">
-        <h3 id="codeConf">Secure your spot at next year's biggest coding conference.</h3>
-        <label for="Upload" >Upload Avatar</label>
+        <h3 id="codeConf">
+          Secure your spot at next year's biggest coding conference.
+        </h3>
+        <label for="Upload">Upload Avatar</label>
         <!-- <div class="ImgDiv">
           <br />
           <img
@@ -217,9 +225,7 @@ label{
           id="gitUser"
           name="userName"
         /><br />
-        <input type="submit" id="btnsubmit">
-         
-        </input>
+        <input type="submit" id="btnsubmit" />
       </form>
     </div>
     <!-- Form ends -->
@@ -239,8 +245,8 @@ label{
       const fullname = document.getElementById("fullName");
       const pic = document.getElementById("picId");
       const form = document.querySelector("form");
-      const email = document.getElementById('email');
-      const gitUser = document.getElementById('gitUser');
+      const email = document.getElementById("email");
+      const gitUser = document.getElementById("gitUser");
 
       let picDetails;
       let relativepath = "";
@@ -264,42 +270,19 @@ label{
 
       form.addEventListener("submit", (e) => {
         //
-        
-        const fullName = document.forms['myForm']['fullName'].value;
-        const  email = document.forms['myForm']['email'].value;
-        const username = document.forms['myForm']['userName'].value;
-        if(fullName&&email&&username){
-          
-        }
-        else{
-          alert('Fill all the fields');
-          fullname.value='';
-          email.value='';
-          gitUser.value='';
+
+        const fullName = document.forms["myForm"]["fullName"].value;
+        const email = document.forms["myForm"]["email"].value;
+        const username = document.forms["myForm"]["userName"].value;
+        if (fullName && email && username) {
+        } else {
+          alert("Fill all the fields");
+          fullname.value = "";
+          email.value = "";
+          gitUser.value = "";
           e.preventDefault();
         }
       });
-
-      function handleEmptyField() {
-        document.getElementById("btnClick").addEventListener("click", (e) => {
-          if (
-            document.getElementById("fullName").value == "" &&
-            document.getElementById("email").value == "" &&
-            document.getElementById("gitUser").value == ""
-          ) {
-            e.preventDefault();
-          }
-        });
-
-        if (
-          document.getElementById("fullName").value == "" ||
-          document.getElementById("email").value == "" ||
-          document.getElementById("gitUser").value == ""
-        ) {
-          alert("Field Must not be empty");
-        } else {
-        }
-      }
 
       function handlefullName() {
         const value = document.getElementById("fullName").value;
